@@ -2,11 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
-    entry: './index.js',
+    entry: './src/index.js',
     output: {
-        library: 'SSOConector',
+        library: 'vanilla-wiz-sso',
         libraryTarget: 'umd',
-        libraryExport: 'default',
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js'
     },
@@ -22,5 +21,6 @@ module.exports = {
     plugins: [
         new uglifyJsPlugin(),        
         new webpack.HotModuleReplacementPlugin(),
-    ]
+    ],
+    mode: 'production'
 };
