@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const uglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
-    entry: './src/index.js',
+    entry: './index.js',
     output: {
         library: 'SSOConector',
         libraryTarget: 'umd',

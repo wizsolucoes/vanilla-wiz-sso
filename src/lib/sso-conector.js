@@ -15,18 +15,19 @@ export class SSOConector {
         return SSOConector._token;
     }
 
-    constructor() {
-        
-        if (!config.autoRefreshToken) config.autoRefreshToken = true;
-        if (!config.ssoTimeout) config.ssoTimeout = 60000;
+    constructor(config) {
+        if (!config.options) config.options = {};
+        if (!config.options.tokenAutoRefresh) config.options.tokenAutoRefresh = true;
+        if (!config.options.ssoTimeout) config.ssoTimeout = 60000;
 
         this.apiPath = config.apiPath;
-        this.grant_type = config.grant_type;
-        this.client_id = config.client_id;
-        this.client_secret = config.client_secret;
+        this.client_id = config.clientID;
+        this.grant_type = config.grantType;
+        this.client_secret = config.clientSecret;
         this.scope = config.scope;
-        this.autoRefreshToken = config.autoRefreshToken;
-        this.ssoTimeout = config.ssoTimeout;
+
+        this.autoRefreshToken = config.options.tokenAutoRefresh;
+        this.ssoTimeout = config.options.ssoTimeOut;
 
         this._ctrlRefreshInterval = null;
     }
