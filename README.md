@@ -67,7 +67,7 @@ No campo **options** existem os seguintes campos:
 * autoRefreshToken: valor booleano que indentifica se o token deve ser renovado quando expirado, por padrão seu valor é *true*
 * ssoTimeout: valor, em millesegundos, que identifica quanto tempo a requisição de login ou renovação de token deve aguardar até considerar que houve um timeout. Por padrão esse valor é 60000 (um minuto).
 
-### Propriedádes e metódos da classe:
+### Propriedades e metódos da classe:
 
 * **static onAutoRefreshFail** propriédade estática que dispara erro caso a renovação automática de token falhe.
 
