@@ -47,6 +47,7 @@ export class SSOConector {
     _tryRenewToken() {
         this.refreshToken()
             .then(_ => {
+                clearTimeout(this._ctrlRefreshInterval);
                 this._ctrlRefreshInterval = null;
                 this._startAutoRefreshToken();
             }, _ => {
@@ -118,24 +119,31 @@ export class SSOConector {
     refreshToken() {
 
         return new Promise((resolve, reject) => {
-            new HttpConnector(this.ssoTimeout)
-                .request(
-                    'post',
-                    `${this.apiPath}/connect/token`,
-                    'application/x-www-form-urlencoded',
-                    `grant_type=refresh_token&client_id=${this.client_id}&client_secret=${this.client_secret}&refresh_token=${SSOConector._token.refreshToken}`
-                ).then((data) => {
-                    SSOConector.setToken(data);
-                    resolve(SSOConector.getToken());
-                }, (error) => {
-                    reject(error);
-                });
+            if (SSOConector.getToken()) {
+                new HttpConnector(this.ssoTimeout)
+                    .request(
+                        'post',
+                        `${this.apiPath}/connect/token`,
+                        'application/x-www-form-urlencoded',
+                        `grant_type=refresh_token&client_id=${this.client_id}&client_secret=${this.client_secret}&refresh_token=${SSOConector._token.refreshToken}`
+                    ).then((data) => {
+                        SSOConector.setToken(data);
+                        resolve(SSOConector.getToken());
+                    }, (error) => {
+                        reject(error);
+                    });
+            } else {
+                reject('Não há token há ser renovado!');
+            }
         });
 
     }
 
     logOut() {
+        if(this._ctrlRefreshInterval) clearTimeout(this._ctrlRefreshInterval);
+        this._ctrlRefreshInterval = null;
         window.localStorage.removeItem("auth_data");
+        SSOConector._token = null;
     }
 }
 

@@ -4,13 +4,11 @@
   "description": "Lib js para autenticação e renovação de token para o SSO.",
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "webpack",
-    "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "prepare": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "https://dev.azure.com/wizsolucoes/WizCross/_git/vanilla-wiz-sso"
+    "url": "https://github.com/wizsolucoes/vanilla-wiz-sso"
   },
   "author": "",
   "license": "ISC",
