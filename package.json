@@ -2,9 +2,9 @@
   "name": "vanilla-wiz-sso",
   "version": "1.0.0",
   "description": "Lib js para autenticação e renovação de token para o SSO.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "webpack",
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
