@@ -1,5 +1,3 @@
-import { stat } from "fs";
-
 export class SSOConector {
 
     static setToken(_token) {
