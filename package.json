@@ -1,7 +1,7 @@
 {
-  "name": "vanilla-wiz-sso",
+  "name": "@wizsolucoes/vanilla-wiz-sso",
   "version": "1.0.0",
-  "description": "Lib js para autenticação e renovação de token para o SSO.",
+  "description": "Lib js para autenticação e renovação de token para o SSO.",  
   "main": "dist/index.js",
   "scripts": {
     "prepare": "webpack"
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/wizsolucoes/vanilla-wiz-sso"
   },
-  "author": "",
+  "author": "Givailson de Souza Neves",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^9.5.0",

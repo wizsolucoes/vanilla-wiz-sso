@@ -1,3 +1,5 @@
+import { stat } from "fs";
+
 export class SSOConector {
 
     static setToken(_token) {
@@ -57,6 +59,10 @@ export class SSOConector {
 
     static _getCurrentTime() {
         return new Date().getTime();
+    }
+
+    setAutoRefreshToken(enabled) {
+        this.autoRefreshToken = enabled;
     }
 
     isLogged() {
