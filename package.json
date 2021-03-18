@@ -1,7 +1,7 @@
 {
   "name": "@wizsolucoes/vanilla-wiz-sso",
-  "version": "1.0.1",
-  "description": "Lib js para autenticação e renovação de token para o SSO.",  
+  "version": "1.0.2",
+  "description": "Lib js para autenticação e renovação de token para o SSO.",
   "main": "dist/index.js",
   "scripts": {
     "prepare": "webpack"
