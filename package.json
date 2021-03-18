@@ -4,7 +4,8 @@
   "description": "Lib js para autenticação e renovação de token para o SSO.",
   "main": "dist/index.js",
   "scripts": {
-    "prepare": "webpack"
+    "build": "webpack",
+    "test": "echo TODO: Projeto sem testes!"
   },
   "repository": {
     "type": "git",
