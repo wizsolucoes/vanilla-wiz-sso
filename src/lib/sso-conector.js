@@ -23,10 +23,10 @@ export class SSOConector {
         if (!config.options.ssoTimeout) config.ssoTimeout = 60000;
 
         this.apiPath = config.apiPath;
-        this.client_id = config.clientID;
-        this.grant_type = config.grantType;
-        this.client_secret = config.clientSecret;
-        this.scope = config.scope;
+        this.client_id = encodeURIComponent(config.clientID);
+        this.grant_type = encodeURIComponent(config.grantType);
+        this.client_secret = encodeURIComponent(config.clientSecret);
+        this.scope = encodeURIComponent(config.scope);
 
         this.autoRefreshToken = config.options.tokenAutoRefresh;
         this.ssoTimeout = config.options.ssoTimeOut;
@@ -113,7 +113,7 @@ export class SSOConector {
                     'post',
                     `${this.apiPath}/connect/token`,
                     'application/x-www-form-urlencoded',
-                    `grant_type=${this.grant_type}&username=${username}&password=${password}&client_id=${this.client_id}&client_secret=${this.client_secret}&scope=${this.scope}`
+                    `grant_type=${this.grant_type}&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&client_id=${this.client_id}&client_secret=${this.client_secret}&scope=${this.scope}`
                 ).then((data) => {
                     SSOConector.setToken(data);
                     if (this.autoRefreshToken) this._startAutoRefreshToken();

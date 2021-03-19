@@ -31,6 +31,7 @@ export class HttpConnector {
             }, this.timeout);
 
             var _sendData = (_contentType != 'application/x-www-form-urlencoded') ? JSON.stringify(_data) : _data;
+
             xmlHttp.send(_sendData);
         });
 
