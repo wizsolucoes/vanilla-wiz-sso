@@ -1,7 +1,8 @@
 export class HttpConnector {
 
-    constructor(timeout = 60000) {
+    constructor(timeout = 60000, apiSubscription = '') {
         this.timeout = timeout;
+        this.apiSubscription = apiSubscription;
         this.timeoutCtrl = null;
     }
 
@@ -12,6 +13,7 @@ export class HttpConnector {
             var xmlHttp = this._getXMLHttpRequest();
             xmlHttp.open(_method, _url, true);
             xmlHttp.setRequestHeader('Content-Type', _contentType);
+            xmlHttp.setRequestHeader('x-api-subscription', this.apiSubscription);
             this.timeoutCtrl = null;
 
             xmlHttp.onreadystatechange = () => {

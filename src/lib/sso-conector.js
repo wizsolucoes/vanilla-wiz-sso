@@ -21,6 +21,7 @@ export class SSOConector {
         if (!config.options) config.options = {};
         if (!config.options.tokenAutoRefresh) config.options.tokenAutoRefresh = true;
         if (!config.options.ssoTimeout) config.ssoTimeout = 60000;
+        if (!config.apiSubscription) config.apiSubscription = '';
 
         this.apiPath = config.apiPath;
         this.client_id = encodeURIComponent(config.clientID);
@@ -30,6 +31,7 @@ export class SSOConector {
 
         this.autoRefreshToken = config.options.tokenAutoRefresh;
         this.ssoTimeout = config.options.ssoTimeOut;
+        this.apiSubscription = config.apiSubscription;
 
         this._ctrlRefreshInterval = null;
     }
@@ -106,9 +108,8 @@ export class SSOConector {
     }
 
     loginWithCredentials(username, password) {
-
         return new Promise((resolve, reject) => {
-            new HttpConnector(this.ssoTimeout)
+            new HttpConnector(this.ssoTimeout, this.apiSubscription)
                 .request(
                     'post',
                     `${this.apiPath}/connect/token`,
@@ -129,7 +130,7 @@ export class SSOConector {
 
         return new Promise((resolve, reject) => {
             if (SSOConector.getToken()) {
-                new HttpConnector(this.ssoTimeout)
+                new HttpConnector(this.ssoTimeout, this.apiSubscription)
                     .request(
                         'post',
                         `${this.apiPath}/connect/token`,
