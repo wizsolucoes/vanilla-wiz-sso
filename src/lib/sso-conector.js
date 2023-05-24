@@ -10,7 +10,7 @@ export class SSOConector {
             refreshToken: _token.refresh_token
         }
 
-        window.localStorage.setItem("auth_data", JSON.stringify(SSOConector._token));
+        window.localStorage.setItem("w-auth", JSON.stringify(SSOConector._token));
     }
 
     static getToken() {
@@ -71,7 +71,7 @@ export class SSOConector {
 
         return new Promise((resolve, reject) => {
 
-            var data = window.localStorage.getItem("auth_data");
+            var data = window.localStorage.getItem("w-auth");
 
             if (data) {
 
@@ -152,7 +152,7 @@ export class SSOConector {
     logOut() {
         if(this._ctrlRefreshInterval) clearTimeout(this._ctrlRefreshInterval);
         this._ctrlRefreshInterval = null;
-        window.localStorage.removeItem("auth_data");
+        window.localStorage.removeItem("w-auth");
         SSOConector._token = null;
     }
 }
